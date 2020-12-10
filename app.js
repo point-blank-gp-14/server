@@ -30,6 +30,7 @@ io.on('connection', socket => {
     console.log(newPlayer);
     players.push(newPlayer)
     console.log(players);
+    socket.broadcast.emit('FETCH_USER', players)
   })
 
   socket.on('getPlayers', payload => {

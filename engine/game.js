@@ -14,6 +14,6 @@ class GameEngine{
 }
 
 
-console.log(GameEngine.randomizePosition(2));
+// console.log(GameEngine.randomizePosition(2));
 
 module.exports = GameEngine

@@ -36,6 +36,10 @@ io.on('connection', socket => {
   socket.on('getPlayers', payload => {
     socket.emit('FETCH_USER', players)
   })
+
+  socket.on('play', payload =>{
+    socket.broadcast.emit('DO_PLAY')
+  })
 })
 
 

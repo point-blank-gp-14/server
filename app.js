@@ -31,6 +31,10 @@ io.on('connection', socket => {
     players.push(newPlayer)
     console.log(players);
   })
+
+  socket.on('getPlayers', payload => {
+    socket.emit('FETCH_USER', players)
+  })
 })
 
 

@@ -19,6 +19,8 @@ io.on('connection', socket => {
   socket.on('GET_POSITION', payload => {
     const newPosition = GameEngine.randomizePosition(+payload)
     socket.emit('GET_NEW_POSITION', newPosition)
+    socket.broadcast.emit('GET_NEW_POSITION', newPosition)
+
   })
 
   //nerima player dari client

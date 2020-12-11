@@ -60,7 +60,8 @@ io.on('connection', socket => {
     });
     socket.emit('FETCH_USER', players)
     socket.broadcast.emit('FETCH_USER', players)
-    
+    socket.emit('TRIGGER_SOUND')
+    socket.broadcast.emit('TRIGGER_SOUND')
     //win condition trigger
     if(winTrigger.status){
       socket.emit('END_TRIGGER', winTrigger.name)

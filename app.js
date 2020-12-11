@@ -45,13 +45,26 @@ io.on('connection', socket => {
 
   socket.on('addScore', payload=>{
     // console.log(payload);
+    let winTrigger = {
+      status : false,
+      name : ''
+    }
     players.forEach(e=>{
       if(e.name === payload){
         e.score += 10
+        if(e.score >= 100){
+          winTrigger.status = true
+          winTrigger.name = payload
+        }
       }
     });
     socket.emit('FETCH_USER', players)
     socket.broadcast.emit('FETCH_USER', players)
+    
+    //win condition trigger
+    if(winTrigger.status){
+      socket.emit('END_TRIGGER', winTrigger.name)
+    }
   })
 })
 

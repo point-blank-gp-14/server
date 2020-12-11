@@ -64,6 +64,7 @@ io.on('connection', socket => {
     //win condition trigger
     if(winTrigger.status){
       socket.emit('END_TRIGGER', winTrigger.name)
+      socket.broadcast.emit('END_TRIGGER', winTrigger.name)
     }
   })
 })

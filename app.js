@@ -68,6 +68,11 @@ io.on('connection', socket => {
       socket.broadcast.emit('END_TRIGGER', winTrigger.name)
     }
   })
+  socket.on('restart', () => {
+    players.forEach(e => {
+      e.score = 0
+    })
+  })
 })
 
 

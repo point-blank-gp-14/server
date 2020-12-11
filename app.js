@@ -42,6 +42,17 @@ io.on('connection', socket => {
   socket.on('play', payload =>{
     socket.broadcast.emit('DO_PLAY')
   })
+
+  socket.on('addScore', payload=>{
+    // console.log(payload);
+    players.forEach(e=>{
+      if(e.name === payload){
+        e.score += 10
+      }
+    });
+    socket.emit('FETCH_USER', players)
+    socket.broadcast.emit('FETCH_USER', players)
+  })
 })
 
 
